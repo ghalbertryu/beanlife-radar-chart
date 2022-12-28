@@ -8,8 +8,8 @@
 
 
 ## Demo
-[https://ghalbertryu.github.io/beanlife-front/](https://ghalbertryu.github.io/beanlife-front/)
-![image](https://github.com/ghalbertryu/beanlife-front/blob/master/demo/demo-index-web.png)
+[radar-chart-demo.html](https://ghalbertryu.github.io/beanlife-radar-chart/radar-chart-demo.html)
+![image](https://github.com/ghalbertryu/beanlife-radar-chart/blob/master/demo/demo-chart.png)
 
 ## Changelog
 ### 2022-12-28
