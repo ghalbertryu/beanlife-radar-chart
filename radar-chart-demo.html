@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Coffee Bean Rader Chart Demo</title>
+</head>
+
+<body>
+	<div>
+		<svg class="" height="300" >
+			<polygon id="polygon1" points="" style="fill:white;stroke:black;stroke-width:1" />
+			<polygon id="polygon2" points="" style="fill:white;stroke:black;stroke-width:1" />
+			<polygon id="polygon3" points="" style="fill:white;stroke:black;stroke-width:1" />
+			<polygon id="polygon4" points="" style="fill:white;stroke:black;stroke-width:1" />
+			<polygon id="polygon5" points="" style="fill:white;stroke:black;stroke-width:1" />
+	
+			<polygon id="aroma" points="" style="fill:rgba(0, 154, 100, 0.6);stroke:rgb(0, 150, 150);stroke-width:2" />
+	
+			<line id="line1" x1="0" y1="0" x2="" y2="" style="stroke:silver;stroke-width:1" />
+			<line id="line2" x1="0" y1="0" x2="" y2="" style="stroke:silver;stroke-width:1" />
+			<line id="line3" x1="0" y1="0" x2="" y2="" style="stroke:silver;stroke-width:1" />
+			<line id="line4" x1="0" y1="0" x2="" y2="" style="stroke:silver;stroke-width:1" />
+			<line id="line5" x1="0" y1="0" x2="" y2="" style="stroke:silver;stroke-width:1" />
+	
+			<text id="b_body" x="" y="" style="font-weight:bold; fill:black;">醇度</text>
+			<text id="b_acid" x="" y="" style="font-weight:bold; fill:black;">酸度</text>
+			<text id="b_after" x="" y="" style="font-weight:bold; fill:black;">餘味</text>
+			<text id="b_bal" x="" y="" style="font-weight:bold; fill:black;">平衡度</text>
+			<text id="b_aroma" x="" y="" style="font-weight:bold; fill:black;">香氣</text>
+		</svg>
+	</div>
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script type="text/javascript">
+
+		drawCoffeeBeanRadarChart(3, 3, 4, 5, 4);
+
+		function drawCoffeeBeanRadarChart(body, acid, after, balance, aroma) {
+			var unitRad = 2 * Math.PI / 5;
+			var spinRad = Math.PI / 10;
+			var radius = 100;
+			var centerLoc = 150;
+			var spaceLength = 20;
+
+			//draw line
+			$("#line1").attr("x1",centerLoc+radius*Math.cos(unitRad*1-spinRad)).attr("y1",centerLoc+radius*Math.sin(unitRad*1-spinRad)).attr("x2",centerLoc).attr("y2",centerLoc);
+			$("#line2").attr("x1",centerLoc+radius*Math.cos(unitRad*2-spinRad)).attr("y1",centerLoc+radius*Math.sin(unitRad*2-spinRad)).attr("x2",centerLoc).attr("y2",centerLoc);
+			$("#line3").attr("x1",centerLoc+radius*Math.cos(unitRad*3-spinRad)).attr("y1",centerLoc+radius*Math.sin(unitRad*3-spinRad)).attr("x2",centerLoc).attr("y2",centerLoc);
+			$("#line4").attr("x1",centerLoc+radius*Math.cos(unitRad*4-spinRad)).attr("y1",centerLoc+radius*Math.sin(unitRad*4-spinRad)).attr("x2",centerLoc).attr("y2",centerLoc);
+			$("#line5").attr("x1",centerLoc+radius*Math.cos(unitRad*0-spinRad)).attr("y1",centerLoc+radius*Math.sin(unitRad*0-spinRad)).attr("x2",centerLoc).attr("y2",centerLoc);
+
+			//draw text
+			var tx = radius+spaceLength;
+			$('#b_body').attr('x',centerLoc+tx*Math.cos(unitRad*4-spinRad)-spaceLength/1.4).attr('y',centerLoc+tx*Math.sin(unitRad*4-spinRad)+spaceLength/1.7);
+			$('#b_acid').attr('x',centerLoc+tx*Math.cos(unitRad*5-spinRad)-spaceLength/1.4).attr('y',centerLoc+tx*Math.sin(unitRad*5-spinRad));
+			$('#b_after').attr('x',centerLoc+tx*Math.cos(unitRad*1-spinRad)-spaceLength/1.4).attr('y',centerLoc+tx*Math.sin(unitRad*1-spinRad));
+			$('#b_bal').attr('x',centerLoc+tx*Math.cos(unitRad*2-spinRad)-spaceLength/1.4).attr('y',centerLoc+tx*Math.sin(unitRad*2-spinRad));
+			$('#b_aroma').attr('x',centerLoc+tx*Math.cos(unitRad*3-spinRad)-spaceLength/1.4).attr('y',centerLoc+tx*Math.sin(unitRad*3-spinRad));
+
+			//draw 5 polygon
+			$("#polygon1").attr("points",
+						(centerLoc+radius*Math.cos(unitRad*1-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*1-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*2-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*2-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*3-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*3-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*4-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*4-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*0-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*0-spinRad)) + " "
+						);
+			radius-=spaceLength;
+			$("#polygon2").attr("points",
+						(centerLoc+radius*Math.cos(unitRad*1-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*1-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*2-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*2-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*3-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*3-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*4-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*4-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*0-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*0-spinRad)) + " " 
+						);
+			radius-=spaceLength;
+			$("#polygon3").attr("points",
+						(centerLoc+radius*Math.cos(unitRad*1-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*1-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*2-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*2-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*3-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*3-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*4-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*4-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*0-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*0-spinRad)) + " " 
+						);
+			radius-=spaceLength;
+			$("#polygon4").attr("points",
+						(centerLoc+radius*Math.cos(unitRad*1-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*1-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*2-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*2-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*3-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*3-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*4-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*4-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*0-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*0-spinRad)) + " " 
+						);
+			radius-=spaceLength;
+			$("#polygon5").attr("points",
+						(centerLoc+radius*Math.cos(unitRad*1-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*1-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*2-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*2-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*3-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*3-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*4-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*4-spinRad)) + " " +
+						(centerLoc+radius*Math.cos(unitRad*0-spinRad)) + "," + (centerLoc+radius*Math.sin(unitRad*0-spinRad)) + " " 
+						);
+	
+			
+			//draw bean_attr
+			$("#aroma").attr("points",
+						(centerLoc+spaceLength* body *Math.cos(unitRad*4-spinRad)) + "," + (centerLoc+spaceLength* body *Math.sin(unitRad*4-spinRad)) + " " +
+						(centerLoc+spaceLength* acid *Math.cos(unitRad*5-spinRad)) + "," + (centerLoc+spaceLength* acid *Math.sin(unitRad*5-spinRad)) + " " +
+						(centerLoc+spaceLength* after *Math.cos(unitRad*1-spinRad)) + "," + (centerLoc+spaceLength* after *Math.sin(unitRad*1-spinRad)) + " " +
+						(centerLoc+spaceLength* balance *Math.cos(unitRad*2-spinRad)) + "," + (centerLoc+spaceLength* balance *Math.sin(unitRad*2-spinRad)) + " " +
+						(centerLoc+spaceLength* aroma *Math.cos(unitRad*3-spinRad)) + "," + (centerLoc+spaceLength* aroma *Math.sin(unitRad*3-spinRad)) + " "
+						);
+		}
+	</script>
+</body>
+</html>
